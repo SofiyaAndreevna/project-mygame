@@ -9,9 +9,10 @@ function QuestionsList(): JSX.Element {
   const { titles } = useSelector((store: RootState) => store.questionsReducer);
 
   return (
-    <div>
+    <div className={style.totalDivQuestions}>
       {titles.map((title) => (
         <div key={title.id}>
+          <h2>{title.title}</h2>
           <PointCard title={title} />
           {/* <QuestionWindow title={title} /> */}
         </div>
