@@ -14,4 +14,6 @@ export type Title = {
 
 export type State = {
   titles: Title[];
+  count:number;
+  questions: Question[];
 };
