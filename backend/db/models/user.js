@@ -2,8 +2,7 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate({ Comment }) {
-      this.hasMany(Comment, { foreignKey: 'comUserId' });
+    static associate() {
     }
   }
   User.init(
@@ -17,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
         type: DataTypes.TEXT,
+      },
+      points: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
       },
     },
     {
