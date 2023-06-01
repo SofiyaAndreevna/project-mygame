@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import style from './questions.module.css';
 import { RootState } from '../../store';
@@ -7,13 +7,14 @@ import PointCard from './PointCard';
 
 function QuestionsList(): JSX.Element {
   const { titles } = useSelector((store: RootState) => store.questionsReducer);
+
   return (
     <div>
       {titles.map((title) => (
-        <>
-          <PointCard title={title} key={title.id} />
-          <QuestionWindow title={title} key={title.id} />
-        </>
+        <div key={title.id}>
+          <PointCard title={title} />
+          <QuestionWindow title={title} />
+        </div>
       ))}
     </div>
   );

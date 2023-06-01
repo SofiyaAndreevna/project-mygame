@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Question, Title } from './redux/type/type';
 
-function QuestionWindow() {
+function QuestionWindow({ title }: { title: Title }): JSX.Element {
   const [answer, setAnswer] = useState('');
-  const
+  // const sendAnswer()
   return (
     <div>
+      {/* <button type="button" onClick={setShow}>X</button> */}
       {title.title}
-      {title.quest.map((quest: Question) => (
-        <div>
+      {title.Questions.map((quest: Question) => (
+        <div key={quest.id}>
           <h2>{quest.text}</h2>
           <input
             type="text"
@@ -16,7 +18,7 @@ function QuestionWindow() {
             onChange={(e) => setAnswer(e.target.value)}
             value={answer}
           />
-          <button onClick={}>Ответить</button>
+          <button type="button">Ответить</button>
         </div>
       ))}
     </div>
