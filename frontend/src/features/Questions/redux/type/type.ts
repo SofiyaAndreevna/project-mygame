@@ -1,6 +1,6 @@
 export type Question = {
   id: number;
-  idTitle: number;
+  titleId: number;
   text: string;
   answer: string;
   points: number;
@@ -9,7 +9,7 @@ export type Question = {
 export type Title = {
   id: number;
   title: string;
-  quest: Question[];
+  Questions: Question[];
 };
 
 export type State = {

@@ -15,9 +15,10 @@ function App(): JSX.Element {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    api
-      .getTitle()
-      .then((data) => dispatch({ type: 'get/titles', payload: data }));
+    api.getTitle().then((data) => {
+      console.log(data);
+      dispatch({ type: 'get/titles', payload: data });
+    });
   }, [dispatch]);
 
   return (

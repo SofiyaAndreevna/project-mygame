@@ -12,10 +12,10 @@ function QuestionsList(): JSX.Element {
   return (
     <div>
       {titles.map((title) => (
-        <>
-          <PointCard title={title} key={title.id} />
-          <QuestionWindow title={title} key={title.id} />
-        </>
+        <div key={title.id}>
+          <PointCard title={title} />
+          <QuestionWindow title={title} />
+        </div>
       ))}
     </div>
   );

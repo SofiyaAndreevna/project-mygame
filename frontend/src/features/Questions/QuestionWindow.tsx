@@ -7,8 +7,8 @@ function QuestionWindow({ title }: { title: Title }): JSX.Element {
   return (
     <div>
       {title.title}
-      {title.quest.map((quest: Question) => (
-        <div>
+      {title.Questions.map((quest: Question) => (
+        <div key={quest.id} >
           <h2>{quest.text}</h2>
           <input
             type="text"

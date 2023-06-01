@@ -3,7 +3,7 @@ const { Title, Question } = require('../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const titles = await Title.findAll();
+    const titles = await Title.findAll({ include: [{ model: Question }] });
     console.log(titles);
     res.json(titles);
   } catch (error) {
