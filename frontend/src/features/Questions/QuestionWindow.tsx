@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { Question, Title } from './redux/type/type';
 
-function QuestionWindow() {
+function QuestionWindow({ title }: { title: Title }): JSX.Element {
   const [answer, setAnswer] = useState('');
-  const sendAnswer()
+  // const sendAnswer()
   return (
     <div>
       {title.title}
@@ -16,7 +17,7 @@ function QuestionWindow() {
             onChange={(e) => setAnswer(e.target.value)}
             value={answer}
           />
-          <button onClick={}>Ответить</button>
+          <button>Ответить</button>
         </div>
       ))}
     </div>

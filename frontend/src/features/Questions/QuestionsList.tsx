@@ -7,6 +7,8 @@ import PointCard from './PointCard';
 
 function QuestionsList(): JSX.Element {
   const { titles } = useSelector((store: RootState) => store.questionsReducer);
+  console.log(titles);
+  
   return (
     <div>
       {titles.map((title) => (

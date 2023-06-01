@@ -9,9 +9,16 @@ import Registration from '../features/Users/Registration';
 import Login from '../features/Users/Login';
 import QuestionsList from '../features/Questions/QuestionsList';
 import QuestionWindow from '../features/Questions/QuestionWindow';
+import * as api from '../features/Questions/api/api';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    api
+      .getTitle()
+      .then((data) => dispatch({ type: 'get/titles', payload: data }));
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -21,10 +28,10 @@ function App(): JSX.Element {
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/game" element={<QuestionsList />} />
-        <Route
+        {/* <Route
           path="/game/:idTitle/question/:idQuest"
           element={<QuestionWindow />}
-        />
+        /> */}
       </Routes>
     </div>
   );
