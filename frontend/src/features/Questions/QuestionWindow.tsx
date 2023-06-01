@@ -2,7 +2,7 @@ import React from 'react';
 
 function QuestionWindow() {
   const [answer, setAnswer] = useState('');
-  const
+  const sendAnswer()
   return (
     <div>
       {title.title}
