@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Question, Title } from './redux/type/type';
+import { useDispatch } from 'react-redux';
+import OneCard from './OneCard';
 
 function PointCard({ title }: { title: Title }): JSX.Element {
+  const dispatch = useDispatch();
+
+  // const getQuestion =():void => {
+
+  // }
   return (
     <div>
       {title.Questions.map((el: Question) => (
-        <div key={el.id}>
-          <button type="button">
-            <h2>{el.points}</h2>
-          </button>
-        </div>
+        <OneCard el={el} />
       ))}
     </div>
   );

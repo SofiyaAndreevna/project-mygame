@@ -13,7 +13,7 @@ function QuestionsList(): JSX.Element {
       {titles.map((title) => (
         <div key={title.id}>
           <PointCard title={title} />
-          <QuestionWindow title={title} />
+          {/* <QuestionWindow title={title} /> */}
         </div>
       ))}
     </div>

@@ -5,7 +5,7 @@ export type Question = {
   answer: string;
   points: number;
 };
-
+export type QuestionId = Question['id'];
 export type Title = {
   id: number;
   title: string;
@@ -14,4 +14,5 @@ export type Title = {
 
 export type State = {
   titles: Title[];
+  questions: Question[];
 };
