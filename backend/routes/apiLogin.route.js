@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
   }
   req.session.userId = user.id;
 
-  res.json({ name: user.name, id: user.id, points: user.points });
+  res.json({ name: user.name, id: user.id, email: user.email });
 });
 
 router.get('/logout', (req, res) => {
