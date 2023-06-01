@@ -5,8 +5,10 @@ function PointCard({ title }: { title: Title }): JSX.Element {
   return (
     <div>
       {title.Questions.map((el: Question) => (
-        <div key={el.id + 1}>
-          <h2>{el.points}</h2>
+        <div key={el.id}>
+          <button type="button">
+            <h2>{el.points}</h2>
+          </button>
         </div>
       ))}
     </div>

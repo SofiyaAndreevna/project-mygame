@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import style from './questions.module.css';
 import { RootState } from '../../store';
@@ -7,8 +7,7 @@ import PointCard from './PointCard';
 
 function QuestionsList(): JSX.Element {
   const { titles } = useSelector((store: RootState) => store.questionsReducer);
-  console.log(titles);
-  
+
   return (
     <div>
       {titles.map((title) => (
