@@ -1,4 +1,5 @@
 require('@babel/register');
+require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const serverConfig = require('./config/serverConfig');
