@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { Question } from './redux/type/type';
-
-function FormAnswer({ el }: { el: Question }): JSX.Element {
+import style from './questions.module.css';
+function FormAnswer({
+  el,
+  closeWindow,
+}: {
+  el: Question;
+  closeWindow: (value: boolean) => void;
+}): JSX.Element {
   const [right, setRight] = useState(false);
   const [show, setShow] = useState(false);
   const [answer, setAnswer] = useState('');
-  const checkAnswer = ():void => {
+  const checkAnswer = (): void => {
     setShow(true);
     if (el.answer === answer) {
       setRight(true);
@@ -14,7 +20,10 @@ function FormAnswer({ el }: { el: Question }): JSX.Element {
     }
   };
   return (
-    <div>
+    <div className={style.answerContainer}>
+      <button type="button" onClick={() => closeWindow(false)}>
+        X
+      </button>
       <h2>{el.text}</h2>
       <input
         placeholder="Отвечай"
@@ -26,9 +35,9 @@ function FormAnswer({ el }: { el: Question }): JSX.Element {
       </button>
       {show ? (
         right ? (
-          <div>Правильный ответ! {el.answer}</div>
+          <div>Правильный ответ!</div>
         ) : (
-          <div>Неправильно! {el.answer}</div>
+          <div>Неправильно! Правильный ответ: {el.answer}</div>
         )
       ) : (
         <>Ответ</>

@@ -14,5 +14,4 @@ export type Title = {
 
 export type State = {
   titles: Title[];
-  questions: Question[];
 };
