@@ -1,10 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './navbar.module.css';
 import { RootState } from '../../store';
+import { log } from 'console';
 
 function Navbar(): JSX.Element {
+  const Logout = (): void => {
+    const dispatch = useDispatch();
+    dispatch({ type: 'user/logout' });
+    fetch('api/registration/logout')
+      .then((res) => res.json())
+      .then((data) => console.log(data.message));
+  };
+  const { user } = useSelector((store: RootState) => store.userReducer);
+  const { count } = useSelector((store: RootState) => store.questionsReducer);
+
   // const { user } = useSelector((store:RootState) => store.userReducer);
   return (
     <div>
@@ -18,10 +29,22 @@ function Navbar(): JSX.Element {
       <div>
         <Link to="/login">Войти</Link>
       </div>
-      <div>
-        <Link to="/game">Играть</Link>
-      </div>
-      <div>Выйти</div>
+      {'name' in user && (
+        <>
+          <div>
+            <Link to="/game">Играть</Link>
+          </div>
+          <div>
+            <button type="button" onClick={Logout}>
+              выйти
+            </button>
+            <div>
+              <h2>здарова {user.name}</h2>
+            </div>
+          </div>
+          <div>у тебя {count} очков</div>
+        </>
+      )}
     </div>
   );
 }
