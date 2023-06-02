@@ -6,9 +6,9 @@ import { RootState } from '../../store';
 import { log } from 'console';
 
 function Navbar(): JSX.Element {
+  const dispatch = useDispatch();
   const Logout = (): void => {
-    const dispatch = useDispatch();
-    dispatch({ type: 'user/logout' });
+    dispatch({ type: 'user/logout', payload: {} });
     fetch('api/registration/logout')
       .then((res) => res.json())
       .then((data) => console.log(data.message));
@@ -35,9 +35,7 @@ function Navbar(): JSX.Element {
             <Link to="/game">Играть</Link>
           </div>
           <div>
-            <button type="button" onClick={Logout}>
-              выйти
-            </button>
+            <div onClick={Logout}><Link to="/">Выйти</Link></div>
             <div>
               <h2>здарова {user.name}</h2>
             </div>

@@ -16,7 +16,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     api.getTitle().then((data) => {
-      console.log(data);
+    
       dispatch({ type: 'get/titles', payload: data });
     });
   }, [dispatch]);
