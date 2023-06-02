@@ -16,7 +16,7 @@ function Navbar(): JSX.Element {
   const { user } = useSelector((store: RootState) => store.userReducer);
   const { count } = useSelector((store: RootState) => store.questionsReducer);
 
-  // const { user } = useSelector((store:RootState) => store.userReducer);
+  // const { user } = useSelector((store:RootState) => store.userReducer)
   return (
     <div>
       {/* <div><h1>{'name' in user && user.name}</h1></div> */}
