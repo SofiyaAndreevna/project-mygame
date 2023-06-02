@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Question, Title } from './redux/type/type';
+import style from './questions.module.css';
 
 function QuestionWindow({ title }: { title: Title }): JSX.Element {
   const [answer, setAnswer] = useState('');
