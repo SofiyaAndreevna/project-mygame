@@ -1,22 +1,30 @@
 .pointDiv {
-
 }
 .totalDivQuestions {
-    /* display: flex; */
-    margin: 50px auto;
-    width: 1000px;
+  /* display: flex; */
+  /* margin: 50px auto;
+    width: 1000px; */
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.theme {
+   color: white;
 }
 
 .btnPoint {
-    cursor: not-allowed;
-    opacity: 0.5;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .answerContainer {
-    position: absolute;
-    top: 200px;
-    left: 1200px;
-    background-color: white;
-    width: 500px;
-    height: 300px;
+  position: absolute;
+  top: 200px;
+  left: 1200px;
+  background-color: white;
+  width: 500px;
+  height: 300px;
 }

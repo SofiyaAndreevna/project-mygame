@@ -1,0 +1,14 @@
+.logarega {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    background: rgb(201,221,30);
+background: radial-gradient(circle, rgba(201,221,30,1) 0%, rgba(7,0,182,1) 90%);
+    color: aliceblue;
+    padding: 25px;
+    margin: 25px;
+    border-radius: 10px;
+}

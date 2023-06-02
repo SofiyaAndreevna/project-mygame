@@ -18,12 +18,12 @@ function Login(): JSX.Element {
       },
       body: JSON.stringify({ email, password }),
     })
-    .then((res) => res.json())
-    .then((data) => dispatch({ type: 'user/login', payload: data }));
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: 'user/login', payload: data }));
   };
   return (
-    <div>
-      <p>авторизация</p>
+    <div className={`${style.logarega}`}>
+      {/* <p>авторизация</p>
       <form onSubmit={LogUser}>
         <input
           name="email"
@@ -40,6 +40,39 @@ function Login(): JSX.Element {
           value={password}
         />
         <button type="submit">войти</button>
+      </form> */}
+
+      <form onSubmit={LogUser} className={style.form}>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Email
+          </label>
+          <input
+            name="email"
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">
+            Пароль
+          </label>
+          <input
+            name="password"
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+            onChange={(event) => setPassword(event.target.value)}
+            value={password}
+          />
+        </div>
+        <button type="submit" className="btn btn-light">
+          Войти
+        </button>
       </form>
     </div>
   );
