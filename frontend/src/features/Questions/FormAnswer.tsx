@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Question } from './redux/type/type';
 import style from './questions.module.css';
+import { useDispatch } from 'react-redux';
 function FormAnswer({
   el,
   closeWindow,
@@ -11,10 +12,12 @@ function FormAnswer({
   const [right, setRight] = useState(false);
   const [show, setShow] = useState(false);
   const [answer, setAnswer] = useState('');
+  const dispatch = useDispatch();
   const checkAnswer = (): void => {
     setShow(true);
     if (el.answer === answer) {
       setRight(true);
+      dispatch({ type: 'counter/change', payload: el.points });
     } else {
       setRight(false);
     }
