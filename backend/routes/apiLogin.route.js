@@ -14,11 +14,13 @@ router.post('/', async (req, res) => {
         user = await User.create({ name, email, password: hash });
         req.session.userId = user.id;
         res.locals.userId = { name: user.name, id: user.id };
-        res.status(201).json({ name: user.name, id: user.id, email: user.email });
+        res
+          .status(201)
+          .json({ name: user.name, id: user.id, email: user.email });
       } else {
         res
           .status(400)
-          .json({ message: ' пользователь c таким email уже существует' });
+          .json({ message: 'пользователь c таким email уже существует' });
       }
     } else {
       res.status(400).json({ message: 'Заполните все поля' });
@@ -36,13 +38,13 @@ router.post('/login', async (req, res) => {
   if (!user || !(await bcrypt.compare(password, user.password))) {
     res.json({
       success: false,
-      message: 'Нет такого пользователя либо пароли не совпадают',
+      message: 'Нет таких!',
     });
     return;
   }
   req.session.userId = user.id;
 
-  res.json({ name: user.name, id: user.id, email: user.email });
+  res.json({ obj: { name: user.name, id: user.id, email: user.email } });
 });
 
 router.get('/logout', (req, res) => {
