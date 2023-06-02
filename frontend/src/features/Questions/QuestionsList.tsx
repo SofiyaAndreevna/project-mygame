@@ -12,8 +12,8 @@ function QuestionsList(): JSX.Element {
     <div className={style.totalDivQuestions}>
       <h2>{counter}</h2>
       {titles.map((title) => (
-        <div key={title.id}>
-          <h2>{title.title}</h2>
+        <div key={title.id} className={style.theme}>
+          <h2 className="po">{title.title}</h2>
           <PointCard title={title} />
           {/* <QuestionWindow title={title} /> */}
         </div>
