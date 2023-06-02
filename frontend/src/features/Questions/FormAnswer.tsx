@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Question } from './redux/type/type';
 import style from './questions.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import * as api from './api/api';
+
 function FormAnswer({
   el,
   closeWindow,
@@ -9,6 +12,7 @@ function FormAnswer({
   el: Question;
   closeWindow: (value: boolean) => void;
 }): JSX.Element {
+  const { counter } = useSelector((store: RootState) => store.questionsReducer);
   const [right, setRight] = useState(false);
   const [show, setShow] = useState(false);
   const [answer, setAnswer] = useState('');
@@ -21,6 +25,8 @@ function FormAnswer({
     } else {
       setRight(false);
     }
+    const number = counter + el.points;
+    api.counterFetch(number);
   };
   return (
     <div className={style.answerContainer}>
