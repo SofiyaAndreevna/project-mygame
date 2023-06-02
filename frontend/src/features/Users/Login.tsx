@@ -1,15 +1,17 @@
 import React from 'react';
 import style from './user.module.css';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Login(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+// const {user}=useSelector((store:));
+// console.log(user,'=================================')
   const dispatch = useDispatch();
 
   const LogUser = (event: React.FormEvent<HTMLFormElement>): void => {
+
     event.preventDefault();
     fetch('api/registration/login', {
       method: 'POST',
@@ -21,6 +23,7 @@ function Login(): JSX.Element {
     .then((res) => res.json())
     .then((data) => dispatch({ type: 'user/login', payload: data }));
   };
+
   return (
     <div>
       <p>авторизация</p>
