@@ -55,7 +55,7 @@ function FormAnswer({
           <div>Неправильно! Правильный ответ: {el.answer}</div>
         )
       ) : (
-        <>Ответ</>
+        <></>
       )}
     </div>
   );
