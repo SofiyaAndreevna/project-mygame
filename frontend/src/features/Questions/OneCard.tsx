@@ -13,8 +13,8 @@ function OneCard({ el }: { el: Question }): JSX.Element {
   return (
     <>
       {able ? (
-        <div key={el.id}>
-          <button type="button" onClick={() => setShow(!show)}>
+        <div key={el.id} >
+          <button type="button" onClick={() => setShow(!show)} className={style.pointBtn}>
             <h2>{el.points}</h2>
           </button>
           {show && (
