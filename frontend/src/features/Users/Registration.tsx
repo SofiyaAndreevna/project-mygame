@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './user.module.css';
+// import store from '../../store';
+import { RootState } from '../../store';
+import { useNavigate } from 'react-router-dom';
 
 function Registration(): JSX.Element {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const { user } = useSelector((store: RootState) => store.userReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const AddUser = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
@@ -22,7 +26,11 @@ function Registration(): JSX.Element {
       .then((res) => res.json())
       .then((data) => dispatch({ type: 'user/registration', payload: data }));
   };
-
+  useEffect(() => {
+    if ('name' in user) {
+      navigate('/game');
+    }
+  });
   return (
     <div className={`${style.logarega}`}>
       {/* <form onSubmit={AddUser}>
