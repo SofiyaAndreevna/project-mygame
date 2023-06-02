@@ -5,4 +5,8 @@ export type Action =
   | {
       type: 'counter/change';
       payload: number;
+    }
+  | {
+      type: 'counter/minus';
+      payload: number;
     };

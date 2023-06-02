@@ -12,8 +12,8 @@ router.post('/', async (req, res) => {
       if (!user) {
         const hash = await bcrypt.hash(password, 10);
         user = await User.create({ name, email, password: hash });
-        req.session.user = user.id;
-        res.locals.user = { name: user.name, id: user.id };
+        req.session.userId = user.id;
+        res.locals.userId = { name: user.name, id: user.id };
         res.status(201).json({ name: user.name, id: user.id, email: user.email });
       } else {
         res

@@ -24,15 +24,21 @@ function FormAnswer({
         .toLowerCase()
         .trim()
         .replace(/[\.\-/\\\s]/, '') ===
-      answer.toLowerCase().trim().replace(/[\.\-/\\\s]/, '')
+      answer
+        .toLowerCase()
+        .trim()
+        .replace(/[\.\-/\\\s]/, '')
     ) {
       setRight(true);
       dispatch({ type: 'counter/change', payload: el.points });
+      const number = counter + el.points;
+      api.counterFetch(number);
     } else {
       setRight(false);
+      dispatch({ type: 'counter/minus', payload: el.points });
+      const number = counter - el.points;
+      api.counterFetch(number);
     }
-    const number = counter + el.points;
-    api.counterFetch(number);
   };
   return (
     <div className={style.answerContainer}>
