@@ -35,9 +35,7 @@ function Navbar(): JSX.Element {
             <Link to="/game">Играть</Link>
           </div>
           <div>
-            <button type="button" onClick={Logout}>
-              выйти
-            </button>
+            <div onClick={Logout}><Link to="/">Выйти</Link></div>
             <div>
               <h2>здарова {user.name}</h2>
             </div>
