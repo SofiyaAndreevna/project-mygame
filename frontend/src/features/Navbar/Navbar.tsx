@@ -6,6 +6,7 @@ import { RootState } from '../../store';
 import { log } from 'console';
 
 function Navbar(): JSX.Element {
+  const { counter } = useSelector((store: RootState) => store.questionsReducer);
   const dispatch = useDispatch();
   const Logout = (): void => {
     dispatch({ type: 'user/logout', payload: {} });
@@ -14,7 +15,7 @@ function Navbar(): JSX.Element {
       .then((data) => console.log(data.message));
   };
   const { user } = useSelector((store: RootState) => store.userReducer);
-  // const { count } = useSelector((store: RootState) => store.questionsReducer);
+  // const { counter } = useSelector((store: RootState) => store.questionsReducer);
 
   // const { user } = useSelector((store:RootState) => store.userReducer)
   return (
@@ -46,7 +47,7 @@ function Navbar(): JSX.Element {
     //           <h2>здарова {user.name}</h2>
     //         </div>
     //       </div>
-    //       <div>у тебя {count} очков</div>
+    //       <div>у тебя {counter} очков</div>
     //     </>
     //   )}
     //   </div>
@@ -98,7 +99,7 @@ function Navbar(): JSX.Element {
                   <h6 className="hiUser">Здарова, {user.name}!</h6>
                 </li>
                 <li className={`nav-item ${style.authed} ${style.hiUser}`}>
-                  <h6>У тебя {count} очков</h6>
+                  <h6>У тебя {counter} очков</h6>
                 </li>
               </>
             ) : (

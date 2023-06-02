@@ -4,11 +4,13 @@
   /* display: flex; */
   /* margin: 50px auto;
     width: 1000px; */
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 5px;
-  grid-row-gap: 5px;
+  grid-row-gap: 5px; */
+  display: flex;
+  flex-direction: column;
 }
 
 .theme {
