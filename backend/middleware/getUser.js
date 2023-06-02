@@ -1,5 +1,3 @@
-
-
 const { User } = require('../db/models');
 
 const getUser = async (req, res, next) => {

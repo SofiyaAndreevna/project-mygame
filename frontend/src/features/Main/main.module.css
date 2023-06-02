@@ -1,0 +1,22 @@
+.main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    ;
+}
+.image {
+    background-image: url('https://wl-adme.cf.tsp.li/resize/728x/jpg/0ff/05d/1df9045e2db6912c43dc8b5839.jpg');
+    width: 500px;
+    height: 350px;
+    border-radius: 20px;
+
+}
+.img{
+    width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.title{
+    margin-top: 10px;
+    color:azure
+}
