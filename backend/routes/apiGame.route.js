@@ -3,11 +3,13 @@ const { Title, Question, User } = require('../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    if (req.session.userId) {
+    // if (req.session.userId)
+    //  {
       const titles = await Title.findAll({ include: [{ model: Question }] });
      
       res.json(titles);
-    } else { res.redirect('http://localhost:3000')}
+    // }
+    // else { res.redirect('http://localhost:3000')}
   } catch (error) {
     res.json({ message: error.message });
   }
