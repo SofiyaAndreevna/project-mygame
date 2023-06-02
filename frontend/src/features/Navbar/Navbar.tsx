@@ -83,7 +83,7 @@ function Navbar(): JSX.Element {
                 </Link>
               </div>
             </li>
-            {'name' in user ? (
+            {user && 'name' in user ? (
               <>
                 <li className={`nav-item ${style.authed}`}>
                   <Link to="/game" className="nav-link">

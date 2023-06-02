@@ -19,4 +19,5 @@ export type UserId = User['id'];
 
 export type State = {
   user: User | {};
+  error: boolean;
 };

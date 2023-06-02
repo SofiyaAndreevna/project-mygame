@@ -8,14 +8,11 @@ import { RootState } from '../../store';
 function Login(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { user } = useSelector((store: RootState) => store.userReducer);
-// const {user}=useSelector((store:));
-// console.log(user,'=================================')
+  const { user, error } = useSelector((store: RootState) => store.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const LogUser = (event: React.FormEvent<HTMLFormElement>): void => {
-
     event.preventDefault();
     fetch('api/registration/login', {
       method: 'POST',
@@ -25,11 +22,24 @@ function Login(): JSX.Element {
       body: JSON.stringify({ email, password }),
     })
       .then((res) => res.json())
-      .then((data) => dispatch({ type: 'user/login', payload: data }));
+      .then((data) => {
+        if (
+          data.message === 'Нет таких!'
+        ) {
+          dispatch({ type: 'login/error', payload: true });
+        } else {
+          dispatch({ type: 'login/error', payload: false });
+          dispatch({ type: 'user/login', payload: data.obj });
+          console.log(data.obj);
+          navigate('/game');
+        }
+      });
   };
   useEffect(() => {
-    if ('name' in user) {
-      navigate('/game');
+    if (user) {
+      if ('name' in user) {
+        navigate('/game');
+      }
     }
   });
   return (
@@ -81,6 +91,7 @@ function Login(): JSX.Element {
             value={password}
           />
         </div>
+        {error && <h4>Неправильный логин или пароль</h4>}
         <button type="submit" className="btn btn-light">
           Войти
         </button>
