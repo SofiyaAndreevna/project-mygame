@@ -123,9 +123,6 @@ function Navbar(): JSX.Element {
               </>
             )}
           </ul>
-          <span className="navbar-text">
-            Navbar text with an inline element
-          </span>
         </div>
       </div>
     </nav>
