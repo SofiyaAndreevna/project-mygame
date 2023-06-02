@@ -92,7 +92,9 @@ function Navbar(): JSX.Element {
                 </li>
                 <li className={`nav-item ${style.authed}`}>
                   <button type="button" onClick={Logout} className="nav-link">
-                    Выйти
+                    <Link to="/" className="nav-link">
+                      Выйти
+                    </Link>
                   </button>
                 </li>
                 <li className={`nav-item ${style.authed} ${style.hiUser}`}>

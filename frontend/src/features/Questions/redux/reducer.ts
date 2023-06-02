@@ -17,6 +17,11 @@ export const questionsReducer = (
         ...state,
         counter: state.counter + action.payload,
       };
+      case 'counter/minus':
+        return {
+          ...state,
+          counter: state.counter - action.payload,
+        };
     default:
       return state;
   }

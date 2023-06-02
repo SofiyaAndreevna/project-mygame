@@ -16,11 +16,17 @@ function App(): JSX.Element {
 
   useEffect(() => {
     api.getTitle().then((data) => {
-    
       dispatch({ type: 'get/titles', payload: data });
     });
   }, [dispatch]);
 
+  useEffect(() => {
+    api.getUser().then((data) => {
+      if (data.name) {
+        dispatch({ type: 'user/login', payload: data });
+      }
+    });
+  }, []);
   return (
     <div className="App">
       <Navbar />

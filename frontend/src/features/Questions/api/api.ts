@@ -1,3 +1,4 @@
+import { User } from '../../Users/redux/type/type';
 import { Title } from '../redux/type/type';
 
 export const getTitle = async (): Promise<Title[]> => {
@@ -16,6 +17,12 @@ export const counterFetch = async (value: number): Promise<Number> => {
       points: value,
     }),
   });
+  const data = await res.json();
+  return data;
+};
+
+export const getUser = async ():Promise<User> => {
+  const res = await fetch('/getUser');
   const data = await res.json();
   return data;
 };
