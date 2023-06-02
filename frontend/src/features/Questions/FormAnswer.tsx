@@ -24,7 +24,10 @@ function FormAnswer({
         .toLowerCase()
         .trim()
         .replace(/[\.\-/\\\s]/, '') ===
-      answer.toLowerCase().trim().replace(/[\.\-/\\\s]/, '')
+      answer
+        .toLowerCase()
+        .trim()
+        .replace(/[\.\-/\\\s]/, '')
     ) {
       setRight(true);
       dispatch({ type: 'counter/change', payload: el.points });
@@ -36,18 +39,30 @@ function FormAnswer({
   };
   return (
     <div className={style.answerContainer}>
-      <button type="button" onClick={() => closeWindow(false)}>
-        X
-      </button>
+      <button
+        type="button"
+        onClick={() => closeWindow(false)}
+        className="btn-close"
+      ></button>
       <h2>{el.text}</h2>
-      <input
-        placeholder="Отвечай"
-        type="answer"
-        onChange={(e) => setAnswer(e.target.value)}
-      />
-      <button type="button" onClick={() => checkAnswer()}>
-        Ответить
-      </button>
+      <div className={`input-group mb-3 ${style.answerInput}`}>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Введите ответ"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+          onChange={(e) => setAnswer(e.target.value)}
+        />
+        <button
+          className="btn btn-outline-warning"
+          type="button"
+          id="button-addon2"
+          onClick={() => checkAnswer()}
+        >
+          Ответить
+        </button>
+      </div>
       {show ? (
         right ? (
           <div>Правильный ответ!</div>
