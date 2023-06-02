@@ -14,7 +14,7 @@ function Navbar(): JSX.Element {
       .then((data) => console.log(data.message));
   };
   const { user } = useSelector((store: RootState) => store.userReducer);
-  const { count } = useSelector((store: RootState) => store.questionsReducer);
+  // const { count } = useSelector((store: RootState) => store.questionsReducer);
 
   // const { user } = useSelector((store:RootState) => store.userReducer)
   return (
@@ -42,7 +42,6 @@ function Navbar(): JSX.Element {
               <h2>здарова {user.name}</h2>
             </div>
           </div>
-          <div>у тебя {count} очков</div>
         </>
       )}
     </div>

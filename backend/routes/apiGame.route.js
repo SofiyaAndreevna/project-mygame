@@ -1,11 +1,10 @@
 const router = require('express').Router();
-const { Title, Question } = require('../db/models');
+const { Title, Question, User } = require('../db/models');
 
 router.get('/', async (req, res) => {
   try {
     const titles = await Title.findAll({ include: [{ model: Question }] });
-    console.log(titles);
-    res.json(titles); 
+    res.json(titles);
   } catch (error) {
     res.json({ message: error.message });
   }
@@ -26,4 +25,15 @@ router.get('/:titleId/question/:questId', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const { points } = req.body;
+    const user = await User.findOne({ where: { id: req.session.userId } });
+    user.points = points;
+    user.save();
+    res.json({ points: user.points });
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
 module.exports = router;
