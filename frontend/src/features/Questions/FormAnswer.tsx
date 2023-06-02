@@ -19,7 +19,13 @@ function FormAnswer({
   const dispatch = useDispatch();
   const checkAnswer = (): void => {
     setShow(true);
-    if (el.answer === answer) {
+    if (
+      el.answer
+        .toLowerCase()
+        .trim()
+        .replace(/[\.\-/\\\s]/, '') ===
+      answer.toLowerCase().trim().replace(/[\.\-/\\\s]/, '')
+    ) {
       setRight(true);
       dispatch({ type: 'counter/change', payload: el.points });
     } else {
